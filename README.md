@@ -1,6 +1,6 @@
 # Vimeo
 
-**Composer wrapper for the official [phpVimeo](https://github.com/vimeo/vimeo-php-lib) Library**
+**Composer wrapper for the [official Vimeo PHP library](https://github.com/vimeo/vimeo-php-lib) Library**
 
 ## Installation
 
