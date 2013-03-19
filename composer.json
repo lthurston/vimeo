@@ -1,7 +1,7 @@
 {
     "name": "dukt/vimeo",
     "type": "library",
-    "description": "Composer wrapper for phpVimeo library",
+    "description": "Composer wrapper for Vimeo PHP library",
     "keywords": ["youtube", "vimeo", "video", "videos"],
     "homepage": "https://github.com/dukt/vimeo",
     "license": "MIT",
