@@ -23,5 +23,5 @@ And run composer to update your dependencies:
 ## Feedback
 
 **Please provide feedback!** We want to make this library useful in as many projects as possible.
-Please raise a Github issue, and point out what you do and don't like, or fork the project and make
+Please [raise a Github issue](https://github.com/dukt/vimeo/issues), and point out what you do and don't like, or fork the project and make
 suggestions. **No issue is too small.**
