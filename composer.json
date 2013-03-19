@@ -1,0 +1,19 @@
+{
+    "name": "dukt/vimeo",
+    "description": "Composer wrapper for phpVimeo library",
+    "keywords": ["youtube", "vimeo", "video", "videos"],
+    "homepage": "https://github.com/dukt/vimeo",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Benjamin David",
+            "email": "ben@dukt.net"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "Dukt\\Vimeo" : "src/" }
+    },
+    "require": {
+        "php": ">=5.3.2"
+    }
+}
