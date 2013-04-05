@@ -27,3 +27,5 @@ Please [raise a Github issue](https://github.com/dukt/vimeo/issues), and point o
 suggestions. **No issue is too small.**
 
 If you have Vimeo specific questions, please refer to [Vimeo API Forum](https://vimeo.com/forums/api).
+
+Actively maintained by [Benjamin David](https://github.com/benjamindavid).
