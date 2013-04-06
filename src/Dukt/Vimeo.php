@@ -542,4 +542,4 @@ class Vimeo
 
 }
 
-class VimeoAPIException extends Exception {}
+class VimeoAPIException extends \Exception {}
