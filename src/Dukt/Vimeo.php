@@ -541,6 +541,27 @@ class Vimeo
         }
     }
 
+    /**
+     * Delete a video.
+     *
+     * @param int $id The video id
+     * @return boolean
+     */
+    public function delete($id)
+    {
+        $call = $this->call('vimeo.videos.delete', ['video_id' => $id]);
+
+        // Confirmation successful, return video id
+        if ($call->stat == 'ok')
+        {
+            return true;
+        }
+        else if ($call->err)
+        {
+            throw new VimeoAPIException($call->err->msg, $call->err->code);
+        }
+    }
+
 }
 
 class VimeoAPIException extends \Exception {}
