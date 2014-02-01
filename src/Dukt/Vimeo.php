@@ -399,6 +399,7 @@ class Vimeo
 
         // Make sure we have enough room left in the user's quota
         $quota = $this->call('vimeo.videos.upload.getQuota');
+
         if ($quota->user->upload_space->free < $file_size) {
             throw new VimeoAPIException('The file is larger than the user\'s remaining quota.', 707);
         }
@@ -478,14 +479,14 @@ class Vimeo
 
         // Verify
         $verify = $this->call('vimeo.videos.upload.verifyChunks', array('ticket_id' => $ticket));
-
+        
         // Make sure our file sizes match up
         foreach ($verify->ticket->chunks as $chunk_check) {
-            $chunk = $chunks[$chunk_check->id];
+            $chunk = $chunks[$chunk_check['id']];
 
-            if ($chunk['size'] != $chunk_check->size) {
+            if ($chunk['size'] != $chunk_check['size']) {
                 // size incorrect, uh oh
-                echo "Chunk {$chunk_check->id} is actually {$chunk['size']} but uploaded as {$chunk_check->size}<br>";
+                throw new VimeoAPIException("Chunk {$chunk_check['id']} is actually {$chunk['size']} but uploaded as {$chunk_check['size']}<br>");
             }
         }
 
@@ -537,6 +538,27 @@ class Vimeo
         }
         else {
             return '';
+        }
+    }
+
+    /**
+     * Delete a video.
+     *
+     * @param int $id The video id
+     * @return boolean
+     */
+    public function delete($id)
+    {
+        $call = $this->call('vimeo.videos.delete', ['video_id' => $id]);
+
+        // Confirmation successful, return video id
+        if ($call->stat == 'ok')
+        {
+            return true;
+        }
+        else if ($call->err)
+        {
+            throw new VimeoAPIException($call->err->msg, $call->err->code);
         }
     }
 
