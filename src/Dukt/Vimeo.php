@@ -479,7 +479,7 @@ class Vimeo
 
         // Verify
         $verify = $this->call('vimeo.videos.upload.verifyChunks', array('ticket_id' => $ticket));
-        
+
         // Make sure our file sizes match up
         foreach ($verify->ticket->chunks as $chunk_check) {
             $chunk = $chunks[$chunk_check['id']];
@@ -549,7 +549,7 @@ class Vimeo
      */
     public function delete($id)
     {
-        $call = $this->call('vimeo.videos.delete', ['video_id' => $id]);
+        $call = $this->call('vimeo.videos.delete', array('video_id' => $id));
 
         // Confirmation successful, return video id
         if ($call->stat == 'ok')
