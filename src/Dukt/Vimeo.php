@@ -225,6 +225,12 @@ class Vimeo
         curl_setopt_array($curl, $curl_opts);
         $response = curl_exec($curl);
         $curl_info = curl_getinfo($curl);
+        $error = false;
+
+        if(curl_errno($curl))
+        {
+            throw new \Exception(curl_error($curl));
+        }
         curl_close($curl);
 
         // Cache the response
@@ -234,7 +240,14 @@ class Vimeo
 
         // Return
         if (!empty($method)) {
+
             $response = unserialize($response);
+
+            if(!$response)
+            {
+                throw new \Exception("Invalid Vimeo response");
+            }
+
             if ($response->stat == 'ok') {
                 return $response;
             }
@@ -479,7 +492,7 @@ class Vimeo
 
         // Verify
         $verify = $this->call('vimeo.videos.upload.verifyChunks', array('ticket_id' => $ticket));
-        
+
         // Make sure our file sizes match up
         foreach ($verify->ticket->chunks as $chunk_check) {
             $chunk = $chunks[$chunk_check['id']];
