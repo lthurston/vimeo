@@ -202,14 +202,14 @@ class Vimeo
             $curl_url = $url.'?'.http_build_query($params, '', '&');
             $curl_opts = array(
                 CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_TIMEOUT => 30
+                CURLOPT_TIMEOUT => 60
             );
         }
         else if (strtoupper($request_method) == 'POST') {
             $curl_url = $url;
             $curl_opts = array(
                 CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_TIMEOUT => 30,
+                CURLOPT_TIMEOUT => 60,
                 CURLOPT_POST => true,
                 CURLOPT_POSTFIELDS => http_build_query($params, '', '&')
             );
